@@ -6,6 +6,7 @@ class Movie {
     // attributes
     public $title;
     public $description;
+    public $posterURL;
     public $language;
     public $underage;
 
@@ -33,9 +34,9 @@ class Movie {
     // metodo
     public function isUnderAge() {
         if ($this->underage) {
-            return 'Questo film non è adatto ai minori di 18 anni';
+            return "<a href='#' class='card-link link-danger'>+ 18</a>";
         } else {
-            return 'Questo film è adatto ai minori di 18 anni';
+            return "<a href='#' class='card-link link-success'>+ 3</a>";
         }
     }
 }

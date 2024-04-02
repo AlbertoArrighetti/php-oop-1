@@ -4,7 +4,7 @@ require 'db.php';
 
 
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,24 +16,34 @@ require 'db.php';
 </head>
 <body>
 
-    <h1>Film List</h1>
+    <?php include './layout/navBar.php' ?>
 
-    <ul>
-        <?php 
-        foreach ($movies as $currentMovie) {
+    <div class="container my-5 ">
+        <ul class="row row-cols-3 ">
+            <?php 
+            foreach ($movies as $currentMovie) {
+    
+                echo "
+                    <div class='card'>
 
-            echo "
-            <li class='mb-3'>
-                " . $currentMovie->title . ", ". $currentMovie->language ." <br>
-                " . $currentMovie?->description . "
-                " . $currentMovie->isUnderAge() ."
+                    <img src='". $currentMovie->posterURL ."' class='card-img-top p-3'>
 
-            </li>
-            ";
 
-        }
-        ?>
-    </ul>
+                    <div class='card-body pt-1'>
+                        <h6 class='mb-3'> ". $currentMovie->director->getFullDirector() ." </h6>
+                        <h5 class='card-title mb-3'>". $currentMovie->title ."</h5>
+                    
+                        <p class='card-text'>". $currentMovie?->description ."</p>
+                    
+                        ". $currentMovie->isUnderAge() . "
+                    </div>
+                    </div>
+                ";
+    
+            }
+            ?>
+        </ul>
+    </div>
 
 
     <!-- bootstrap -->

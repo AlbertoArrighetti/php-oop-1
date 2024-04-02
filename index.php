@@ -12,18 +12,18 @@ class Movie {
 
 
     
-    // construct    
+        
     /**
      * __construct
      *
      * @param  string $_title
-     * @param  string $_description
      * @param  boolean $_underage
+     * @param  string $_language
      */
-    function __construct($_title, $_description, $_underage)
+    function __construct($_title, $_underage, $_language)
         {
             $this->title = $_title;
-            $this->description = $_description;
+            $this->language = $_language;
             $this->underage = $_underage;
         }
 
@@ -38,10 +38,18 @@ class Movie {
     }
 }
 
+$movie1 = new Movie('A Clockwork Orange', true, 'English');
+$movie1->description = 'A Clockwork Orange, novel by Anthony Burgess, published in 1962. Set in a dismal dystopian England, it is the first-person account of a juvenile delinquent who undergoes state-sponsored psychological rehabilitation for his aberrant behaviour';
 
+$movie2 = new Movie('Nightmare', true, 'English');
 
+$movies = [
+    $movie1,
+    $movie2,
+];
 
-
+// var dump 
+var_dump($movies);
 ?>
 
 
@@ -59,7 +67,7 @@ class Movie {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

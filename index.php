@@ -10,38 +10,39 @@ class Movie {
     public $language;
     public $underage;
 
+    public $genres;
 
-    
-        
     /**
      * __construct
      *
      * @param  string $_title
      * @param  boolean $_underage
      * @param  string $_language
+     * @param  array $_genres
      */
-    function __construct($_title, $_underage, $_language)
-        {
-            $this->title = $_title;
-            $this->language = $_language;
-            $this->underage = $_underage;
-        }
+    function __construct($_title, $_underage, $_language, array $_genres)
+    {
+        $this->title = $_title;
+        $this->language = $_language;
+        $this->underage = $_underage;
 
+        $this->genres = $_genres;
+    }
 
     // metodo
     public function isUnderAge() {
         if ($this->underage) {
-            echo 'Questo film non è adatto ai minori di 18 anni';
+            return 'Questo film non è adatto ai minori di 18 anni';
         } else {
-            echo 'Questo film è adatto ai minori di 18 anni';
+            return 'Questo film è adatto ai minori di 18 anni';
         }
     }
 }
 
-$movie1 = new Movie('A Clockwork Orange', true, 'English');
+$movie1 = new Movie('A Clockwork Orange', true, 'English', ['Horror']);
 $movie1->description = 'A Clockwork Orange, novel by Anthony Burgess, published in 1962. Set in a dismal dystopian England, it is the first-person account of a juvenile delinquent who undergoes state-sponsored psychological rehabilitation for his aberrant behaviour';
 
-$movie2 = new Movie('Nightmare', true, 'English');
+$movie2 = new Movie('Nightmare', true, 'English', ['Grottesco', 'Drammatico']);
 
 $movies = [
     $movie1,
@@ -51,8 +52,6 @@ $movies = [
 // var dump 
 var_dump($movies);
 ?>
-
-
 
 
 
@@ -88,12 +87,8 @@ var_dump($movies);
             echo "
             <li class='mb-3'>
                 " . $currentMovie->title . ", ". $currentMovie->language ." <br>
-                "
-                . $currentMovie?->description .
-                
-                $currentMovie->isUnderAge() .
-                "
-
+                " . $currentMovie?->description . "
+                " . $currentMovie->isUnderAge() ."
 
             </li>
             ";

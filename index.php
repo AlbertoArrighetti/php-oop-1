@@ -79,9 +79,28 @@ var_dump($movies);
 </head>
 <body>
 
-    <h1>Hello</h1>
+    <h1>Film List</h1>
+
+    <ul>
+        <?php 
+        foreach ($movies as $currentMovie) {
+
+            echo "
+            <li class='mb-3'>
+                " . $currentMovie->title . ", ". $currentMovie->language ." <br>
+                "
+                . $currentMovie?->description .
+                
+                $currentMovie->isUnderAge() .
+                "
 
 
+            </li>
+            ";
+
+        }
+        ?>
+    </ul>
 
 
     <!-- bootstrap -->
